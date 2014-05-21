@@ -2,6 +2,7 @@
 
 <table>
 <% @products.each do |product| %>
+<%# the helper method cycle alternate the rows for the background colors %>
 <tr class="<%= cycle('list_line_odd', 'list_line_even') %>"> 
   <td>
     <%= image_tag(product.image_url, class: 'list_image') %> 
@@ -9,6 +10,8 @@
   <td class="list_description"> 
     <dl>
       <dt><%= product.title %></dt>
+      <%#The truncate helper is used to display just the first eighty characters of the description %>
+      <%# strip tags in order to remove the HTML tags from the description.%>
       <dd><%= truncate(strip_tags(product.description), length: 80) %></dd> 
     </dl>
   </td>
